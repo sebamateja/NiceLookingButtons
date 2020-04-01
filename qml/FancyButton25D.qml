@@ -7,13 +7,13 @@ Item {
     height: frontLayer.sourceSize.height + root.mouseAreaOffset
 
     //Properties for images source
-    property var sourceFrontLayer : "qrc:/card.png"
-    property var sourceBackLayer1 : "qrc:/hole.png"
-    property var sourceBackLayer2 : "qrc:/gear_bigger.png"
-    property var sourceBackLayer3 : "qrc:/gear_smaller.png"
-    property var sourceShadow : "qrc:/shadow.png"
-    property var sourceSpecular : "qrc:/specular.png"
-    property var sourceGlow : "qrc:/glow.png"
+    property var sourceFrontLayer : "qrc:/images/card.png"
+    property var sourceBackLayer1 : "qrc:/images/hole.png"
+    property var sourceBackLayer2 : "qrc:/images/gear_bigger.png"
+    property var sourceBackLayer3 : "qrc:/images/gear_smaller.png"
+    property var sourceShadow : "qrc:/images/shadow.png"
+    property var sourceSpecular : "qrc:/images/specular.png"
+    property var sourceGlow : "qrc:/images/glow.png"
 
     property real maxAngleBackLayer1: 3+-0
     property real maxAngleBackLayer2: 16
