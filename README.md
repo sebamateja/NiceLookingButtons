@@ -1,1 +1,1 @@
-![alt text](preview.png "Preview image")
+TODO: Separate qml files into smaller reusable components.
