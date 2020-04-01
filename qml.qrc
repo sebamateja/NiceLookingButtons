@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>FancyButton25D.qml</file>
+        <file>specular.png</file>
+        <file>shadow.png</file>
+        <file>preview.png</file>
+        <file>music1.png</file>
+        <file>hole.png</file>
+        <file>gear_smaller.png</file>
+        <file>gear_bigger.png</file>
+        <file>frontLayer.png</file>
+        <file>card.png</file>
+        <file>SimpleButton25D.qml</file>
+        <file>glow.png</file>
+        <file>cover01.png</file>
+    </qresource>
+</RCC>
