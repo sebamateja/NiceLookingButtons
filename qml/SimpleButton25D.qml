@@ -6,10 +6,10 @@ Item {
     width: frontLayer.sourceSize.width + root.mouseAreaOffset
     height: frontLayer.sourceSize.height + root.mouseAreaOffset
 
-    property var sourceFrontLayer : "qrc:/card.png"
-    property var sourceShadow : "qrc:/shadow.png"
-    property var sourceSpecular : "qrc:/specular.png"
-    property var sourceGlow : "qrc:/glow.png"
+    property var sourceFrontLayer : "qrc:/images/card.png"
+    property var sourceShadow : "qrc:/images/shadow.png"
+    property var sourceSpecular : "qrc:/images/specular.png"
+    property var sourceGlow : "qrc:/images/glow.png"
 
     readonly property real centerX: frontLayer.sourceSize.width / 2 + mouseAreaOffset/2
     readonly property real centerY: frontLayer.sourceSize.height / 2 + mouseAreaOffset/2

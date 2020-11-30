@@ -17,5 +17,7 @@
         <file>images/set2.png</file>
         <file>images/shadow.png</file>
         <file>images/specular.png</file>
+        <file>qml/ImageLayer.qml</file>
+        <file>qml/SimpleImageLayer.qml</file>
     </qresource>
 </RCC>

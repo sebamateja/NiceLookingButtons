@@ -15,7 +15,7 @@ Item {
     property var sourceSpecular : "qrc:/images/specular.png"
     property var sourceGlow : "qrc:/images/glow.png"
 
-    property real maxAngleBackLayer1: 3+-0
+    property real maxAngleBackLayer1: 30
     property real maxAngleBackLayer2: 16
     property real maxAngleBackLayer3: 12
     property real maxAngleFrontLayer: 30
@@ -88,238 +88,68 @@ Item {
         }
     }
 
-    Image {
+    SimpleImageLayer {
         id: shadow
-        antialiasing: true
-        source:root.sourceShadow
-        smooth: true
+
+        anchors.centerIn: mouseArea
         anchors.top: frontLayer.top
         anchors.horizontalCenter: frontLayer.horizontalCenter
-        scale: isPressed == true ? scaleOnPressed : 1
 
-        transform: [
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 0; y: 1; z: 0}
-                angle: (root.mouseXPosition - root.centerX)/root.centerX * maxAngleFrontLayer
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 1; y: 0; z: 0}
-                angle: (root.centerY - root.mouseYPosition)/root.centerY * maxAngleFrontLayer
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            }
-        ]
+        sourceLayer: root.sourceShadow
+        maxAngleLayer: root.maxAngleFrontLayer
     }
 
-    Image {
+    SimpleImageLayer {
         id: glowLayer
+
         anchors.centerIn: mouseArea
-        antialiasing: true
-        source: root.sourceGlow
-        scale: isPressed == true ? scaleOnPressed : 1
+        visible: root.isPressed
 
         Behavior on scale {
             NumberAnimation { duration: behaviorDuration }
         }
 
-        visible: root.isPressed
-
-        transform: [
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 0; y: 1; z: 0}
-                angle: (root.mouseXPosition - root.centerX)/root.centerX * maxAngleFrontLayer
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 1; y: 0; z: 0}
-                angle: (root.centerY - root.mouseYPosition)/root.centerY * maxAngleFrontLayer
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            }
-        ]
+        sourceLayer: root.sourceGlow
+        maxAngleLayer: root.maxAngleFrontLayer
     }
 
-    Image {
+    SimpleImageLayer {
         id: frontLayer
+
         anchors.centerIn: mouseArea
-        antialiasing: true
-        smooth: true
-        source: root.sourceFrontLayer
-        scale: isPressed == true ? scaleOnPressed : 1
 
-        transform: [
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 0; y: 1; z: 0}
-                angle: (root.mouseXPosition - root.centerX)/root.centerX * maxAngleFrontLayer
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 1; y: 0; z: 0}
-                angle: (root.centerY - root.mouseYPosition)/root.centerY * maxAngleFrontLayer
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            }
-        ]
+        sourceLayer: root.sourceFrontLayer
+        maxAngleLayer: root.maxAngleFrontLayer
     }
 
-    Image {
+    ImageLayer {
         id: backLayer1
-        antialiasing: true
-        source:root.sourceBackLayer1
+
         anchors.centerIn: frontLayer
-        smooth: true
-        scale: isPressed == true ? scaleOnPressed : 1
 
-        transform: [
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 0; y: 1; z: 0}
-                angle: (root.mouseXPosition - root.centerX)/root.centerX * maxAngleBackLayer1
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 1; y: 0; z: 0}
-                angle: (root.centerY - root.mouseYPosition)/root.centerY * maxAngleBackLayer1
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Translate {
-                x: (root.mouseXPosition - root.centerX)/root.centerX * maxTranslateBackLayer1
-                y: (root.mouseYPosition - root.centerY)/root.centerY * maxTranslateBackLayer1
-
-                Behavior on x {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-
-                Behavior on y {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            }
-        ]
+        sourceBackLayer: root.sourceBackLayer1
+        maxAngleBackLayer: root.maxAngleBackLayer1
+        maxTranslateBackLayer: root.maxTranslateBackLayer1
     }
 
-    Image {
+    ImageLayer {
         id: backLayer2
-        antialiasing: true
-        source:root.sourceBackLayer2
+
         anchors.centerIn: frontLayer
-        smooth: true
-        scale: isPressed == true ? scaleOnPressed : 1
 
-        transform: [
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 0; y: 1; z: 0}
-                angle: (root.mouseXPosition - root.centerX)/root.centerX * maxAngleBackLayer2
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 1; y: 0; z: 0}
-                angle: (root.centerY - root.mouseYPosition)/root.centerY * maxAngleBackLayer2
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Translate {
-                x: (root.mouseXPosition - root.centerX)/root.centerX * maxTranslateBackLayer2
-                y: (root.mouseYPosition - root.centerY)/root.centerY * maxTranslateBackLayer2
-
-                Behavior on x {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-
-                Behavior on y {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            }
-        ]
+        sourceBackLayer: root.sourceBackLayer2
+        maxAngleBackLayer: root.maxAngleBackLayer2
+        maxTranslateBackLayer: root.maxTranslateBackLayer2
     }
 
-    Image {
+    ImageLayer {
         id: backLayer3
-        antialiasing: true
-        source:root.sourceBackLayer3
+
         anchors.centerIn: frontLayer
-        smooth: true
-        scale: isPressed == true ? scaleOnPressed : 1
 
-        transform: [
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 0; y: 1; z: 0}
-                angle: (root.mouseXPosition - root.centerX)/root.centerX * maxAngleBackLayer3
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Rotation {
-                origin.x: root.centerX
-                origin.y: root.centerY
-                axis {x: 1; y: 0; z: 0}
-                angle: (root.centerY - root.mouseYPosition)/root.centerY * maxAngleBackLayer3
-
-                Behavior on angle {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            },
-            Translate {
-                x: (root.mouseXPosition - root.centerX)/root.centerX * maxTranslateBackLayer3
-                y: (root.mouseYPosition - root.centerY)/root.centerY * maxTranslateBackLayer3
-
-                Behavior on x {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-
-                Behavior on y {
-                    NumberAnimation { duration: behaviorDuration }
-                }
-            }
-        ]
+        sourceBackLayer: root.sourceBackLayer3
+        maxAngleBackLayer: root.maxAngleBackLayer3
+        maxTranslateBackLayer: root.maxTranslateBackLayer3
     }
 
     Rectangle {
